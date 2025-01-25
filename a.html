@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Learning Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3f2fd;
+        }
+        header {
+            background-color: #0d47a1;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #388e3c;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section img {
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .book-list {
+            margin-top: 1rem;
+        }
+        .book-list button {
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .book-list button:hover {
+            background-color: #1976d2;
+        }
+        .book-viewer {
+            margin-top: 2rem;
+        }
+        iframe {
+            width: 100%;
+            height: 1000px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        function toggleSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.style.display = 'none');
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+        }
+
+        function viewBook(bookPath) {
+            const iframe = document.getElementById('bookViewer');
+            iframe.src = bookPath;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Arduino Learning Hub</h1>
+        <p>Everything You Need to Learn Arduino and Microcontrollers</p>
+    </header>
+
+    <nav>
+        <button onclick="toggleSection('roadmap')">Roadmap</button>
+        <button onclick="toggleSection('books')">Books</button>
+        <button onclick="toggleSection('platforms')">Learning Platforms</button>
+        <button onclick="toggleSection('videos')">Video Tutorials</button>
+    </nav>
+
+    <div class="container">
+        <div id="roadmap" class="content-section">
+            <h2>Arduino Roadmap</h2>
+            <p>Details about the Arduino learning roadmap.</p>
+            <img src="roadmap.jpg" alt="Arduino Roadmap">
+        </div>
+        <div id="books" class="content-section">
+            <h2>Books</h2>
+            <p>Select a book to view:</p>
+            <div class="book-list">
+                <button onclick="viewBook('الاردوينو بساطة.pdf')">Arduino Basics</button>
+                <button onclick="viewBook('برمجة-الأردوينو.pdf')">Advanced Arduino</button>
+            </div>
+            <div class="book-viewer">
+                <iframe id="bookViewer" src="" title="Book Viewer"></iframe>
+            </div>
+        </div>
+        <div id="platforms" class="content-section">
+            <h2>Learning Platforms</h2>
+            <p>Explore platforms for hands-on learning.</p>
+        </div>
+        <div id="videos" class="content-section">
+            <h2>Video Tutorials</h2>
+            <p>Watch tutorials to deepen your understanding.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Arduino Learning Hub. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
